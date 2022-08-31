@@ -15,7 +15,7 @@ const ModalOverlay = (props) => {
 
 const portalElement = document.querySelector('#overlays');
 
-function Modal(props) {
+const Modal = (props) => {
   return (
     <>
       {createPortal(<Backdrop onClose={props.onClose} />, portalElement)}
@@ -25,6 +25,6 @@ function Modal(props) {
       )}
     </>
   );
-}
+};
 
 export default Modal;

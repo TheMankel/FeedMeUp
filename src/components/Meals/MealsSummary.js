@@ -1,6 +1,6 @@
 import classes from './MealsSummary.module.css';
 
-function MealsSummary() {
+const MealsSummary = () => {
   return (
     <section className={classes.summary}>
       <h2>Delicious Food, Delivered To You</h2>
@@ -14,6 +14,6 @@ function MealsSummary() {
       </p>
     </section>
   );
-}
+};
 
 export default MealsSummary;
