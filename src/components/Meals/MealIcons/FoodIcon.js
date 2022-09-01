@@ -1,13 +1,8 @@
 const FoodIcon = () => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'>
-      <g
-        id='burger'
-        stroke='none'
-        stroke-width='1'
-        fill='none'
-        fill-rule='evenodd'>
-        <g transform='translate(0 4)' fill='#fb6100' fill-rule='nonzero'>
+      <g id='burger'>
+        <g transform='translate(0 4)' fill='#fb6100'>
           <path
             d='M7.801 54.925l64.603.247c4.826 0 7.239-5.219 7.251-9.563.013-4.345-2.908-9.603-8.402-9.63h-23.51a5.332 5.332 0 00-3.34 1.58l-8.6 9.133c-4.084 4.162-6.756 1.422-8.216 0l-8.414-9.225a4.842 4.842 0 00-3.329-1.605H9.162c-5.358 0-8.562 5.22-8.587 9.55-.025 4.333 2.363 9.513 7.226 9.513z'
             id='Path'

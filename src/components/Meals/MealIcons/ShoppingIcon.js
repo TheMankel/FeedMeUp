@@ -8,12 +8,7 @@ const ShoppingIcon = () => {
         />
         <path id='shoppingbag-path-3' d='M20.977 37.156h29.425V65.6H20.977z' />
       </defs>
-      <g
-        id='shoppingbag'
-        stroke='none'
-        stroke-width='1'
-        fill='none'
-        fill-rule='evenodd'>
+      <g id='shoppingbag'>
         <g transform='translate(4)'>
           <mask id='shoppingbag-mask-2' fill='#fff'>
             <use href='#shoppingbag-path-1' />
