@@ -10,7 +10,9 @@ const Header = () => {
     <>
       <header className={classes.header}>
         <div className={classes.logo}>
-          <HeaderIcon />
+          <a href='/'>
+            <HeaderIcon />
+          </a>
           <h1>FeedMeUp</h1>
         </div>
         <HeaderCartButton />
