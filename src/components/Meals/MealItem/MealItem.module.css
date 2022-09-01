@@ -4,6 +4,7 @@
   margin: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #ccc;
+  color: #0a3847;
 }
 
 .meal h3 {
@@ -17,6 +18,6 @@
 .price {
   margin-top: 0.25rem;
   font-weight: bold;
-  color: #ad5502;
+  color: #f86600;
   font-size: 1.25rem;
 }
