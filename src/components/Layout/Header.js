@@ -1,9 +1,9 @@
 import React from 'react';
 
 import HeaderIcon from './HeaderIcon';
-import classes from './Header.module.css';
-import mealsImg from '../../assets/meals.jpg';
 import HeaderCartButton from './HeaderCartButton';
+import mealsImg from '../../assets/meals.jpg';
+import classes from './Header.module.css';
 
 const Header = () => {
   return (
