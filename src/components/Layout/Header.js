@@ -5,7 +5,7 @@ import HeaderCartButton from './HeaderCartButton';
 import mealsImg from '../../assets/meals.jpg';
 import classes from './Header.module.css';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <>
       <header className={classes.header}>
@@ -15,7 +15,7 @@ const Header = () => {
           </a>
           <h1>FeedMeUp</h1>
         </div>
-        <HeaderCartButton />
+        <HeaderCartButton onShow={props.onShow} />
       </header>
       <div className={classes['main-image']}>
         <img src={mealsImg} alt='Tasty and delicious food' />
