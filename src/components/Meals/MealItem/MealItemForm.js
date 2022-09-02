@@ -4,8 +4,12 @@ import Input from '../../UI/Input/Input';
 import classes from './MealItemForm.module.css';
 
 const MealItemForm = (props) => {
+  const addProductHandler = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={addProductHandler}>
       <Input
         input={{
           id: 'amount_' + props.id,
