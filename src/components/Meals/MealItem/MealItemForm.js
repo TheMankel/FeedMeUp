@@ -11,6 +11,8 @@ const MealItemForm = (props) => {
 
     const inputAmountValue = +inputRef.current.value;
 
+    if (inputAmountValue < 1 || inputAmountValue > 5) return;
+
     props.addHandler(inputAmountValue);
   };
 
@@ -18,6 +20,7 @@ const MealItemForm = (props) => {
     <form className={classes.form} onSubmit={addProductHandler}>
       <Input
         ref={inputRef}
+        label='Amount'
         input={{
           id: 'amount_' + props.id,
           type: 'number',
@@ -25,8 +28,8 @@ const MealItemForm = (props) => {
           max: '5',
           step: '1',
           defaultValue: '1',
+          required: 'required',
         }}
-        label='Amount'
       />
       <button>Add</button>
     </form>
