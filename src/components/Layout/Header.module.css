@@ -21,7 +21,8 @@
   font-size: 12px;
 }
 
-.logo svg {
+/* .logo svg, */
+.logo img {
   height: 32px;
   fill: #ffffff;
 }

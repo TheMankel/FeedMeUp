@@ -1,8 +1,9 @@
 import React from 'react';
 
-import HeaderIcon from './HeaderIcon';
+// import HeaderIcon from './HeaderIcon';
 import HeaderCartButton from './HeaderCartButton';
 import mealsImg from '../../assets/meals.jpg';
+import logo from '../../assets/logo.jpg';
 import classes from './Header.module.css';
 
 const Header = (props) => {
@@ -11,7 +12,8 @@ const Header = (props) => {
       <header className={classes.header}>
         <div className={classes.logo}>
           <a href='/'>
-            <HeaderIcon />
+            {/* <HeaderIcon /> */}
+            <img src={logo} alt='FeedMeUp logo' />
           </a>
           <h1>FeedMeUp</h1>
         </div>
