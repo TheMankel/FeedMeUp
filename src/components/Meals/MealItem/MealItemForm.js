@@ -11,6 +11,8 @@ const MealItemForm = (props) => {
 
     const inputAmountValue = +inputRef.current.value;
     console.log(inputAmountValue);
+
+    props.addHandler(inputAmountValue);
   };
 
   return (
