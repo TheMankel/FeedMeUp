@@ -1,6 +1,5 @@
 import React from 'react';
 
-// import HeaderIcon from './HeaderIcon';
 import HeaderCartButton from './HeaderCartButton';
 import mealsImg from '../../assets/meals.jpg';
 import logo from '../../assets/logo.jpg';
@@ -12,7 +11,6 @@ const Header = (props) => {
       <header className={classes.header}>
         <div className={classes.logo}>
           <a href='/'>
-            {/* <HeaderIcon /> */}
             <img src={logo} alt='FeedMeUp logo' />
           </a>
           <h1>FeedMeUp</h1>
@@ -20,7 +18,7 @@ const Header = (props) => {
         <HeaderCartButton onShow={props.onShow} />
       </header>
       <div className={classes['main-image']}>
-        <img src={mealsImg} alt='Tasty and delicious food' />
+        <img src={mealsImg} alt='A table full of delicious food!' />
       </div>
     </>
   );

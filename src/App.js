@@ -7,12 +7,12 @@ import CartProvider from './store/CartProvider';
 function App() {
   const [cartVisible, setCartVisible] = useState(false);
 
-  const closeCartHandler = () => {
-    setCartVisible(false);
-  };
-
   const openCartHandler = () => {
     setCartVisible(true);
+  };
+
+  const closeCartHandler = () => {
+    setCartVisible(false);
   };
 
   return (
