@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import CartContext from '../../store/cart-context';
 
-import CartIcon from '../Cart/CartIcon';
+import CartIcon from '../UI/Icons/CartIcon';
 import classes from './HeaderCartButton.module.css';
 
 const HeaderCartButton = (props) => {
