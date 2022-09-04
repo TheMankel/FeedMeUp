@@ -3,6 +3,10 @@ import React from 'react';
 import MealItem from './MealItem/MealItem';
 import classes from './AvailableMeals.module.css';
 import Card from '../UI/Card/Card';
+import sushi from '../../assets/sushi.jpg';
+import pizza from '../../assets/pizza.jpg';
+import burger from '../../assets/burger.jpg';
+import pancake from '../../assets/pancake.jpg';
 
 const DUMMY_MEALS = [
   {
@@ -10,24 +14,28 @@ const DUMMY_MEALS = [
     name: 'Sushi',
     description: 'Finest fish and veggies',
     price: 22.99,
+    image: sushi,
   },
   {
     id: 'm2',
-    name: 'Schnitzel',
-    description: 'A german specialty!',
+    name: 'Pizza Margherita',
+    description: 'Tomatoes, mozzarella cheese, fresh basil',
     price: 16.5,
+    image: pizza,
   },
   {
     id: 'm3',
     name: 'Barbecue Burger',
     description: 'American, raw, meaty',
-    price: 12.99,
+    price: 18.99,
+    image: burger,
   },
   {
     id: 'm4',
-    name: 'Green Bowl',
-    description: 'Healthy...and green...',
-    price: 18.99,
+    name: 'Pancake',
+    description: 'Wild berries and chocolate',
+    price: 15.99,
+    image: pancake,
   },
 ];
 
@@ -39,6 +47,7 @@ const AvailableMeals = () => {
       name={meal.name}
       description={meal.description}
       price={meal.price}
+      image={meal.image}
     />
   ));
 
