@@ -1,6 +1,6 @@
-import LocationIcon from './MealIcons/LocationIcon';
-import FoodIcon from './MealIcons/FoodIcon';
-import ShoppingIcon from './MealIcons/ShoppingIcon';
+import LocationIcon from '../UI/Icons/LocationIcon';
+import FoodIcon from '../UI/Icons/FoodIcon';
+import ShoppingIcon from '../UI/Icons/ShoppingIcon';
 import classes from './MealsSummary.module.css';
 
 const MealsSummary = () => {

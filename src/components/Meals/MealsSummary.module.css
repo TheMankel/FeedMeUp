@@ -3,24 +3,27 @@
   max-width: 45rem;
   width: 90%;
   margin: auto;
-  margin-top: -10rem;
+  margin-top: -18rem;
   position: relative;
   background-color: #ffffff;
   color: white;
   border-radius: 14px;
   padding: 1rem;
   box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .summary h2 {
-  font-size: 2.25rem;
+  font-size: 2rem;
   color: #0a3847;
   padding: 0;
   margin: 0;
 }
 
 .summary h3 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: #f86600;
   padding: 0;
   margin: 0;
@@ -28,22 +31,27 @@
 
 .steps {
   display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  padding: 1rem;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  gap: 1rem;
 }
 
 .step {
-  width: calc(100% / 3);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.description {
+.step svg {
+  height: 64px;
+}
+
+.description h4,
+p {
+  margin: 0;
+  padding: 0.5rem;
   color: #0a3847;
 }
 
@@ -69,4 +77,32 @@
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+@media (min-width: 481px) {
+  .summary {
+    margin-top: -10rem;
+  }
+
+  .steps {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+
+  .step {
+    width: calc(100% / 3);
+  }
+
+  .step svg {
+    height: 80px;
+  }
+
+  .summary h2 {
+    font-size: 2.25rem;
+  }
+
+  .summary h3 {
+    font-size: 2rem;
+  }
 }
