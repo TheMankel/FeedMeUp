@@ -4,6 +4,8 @@ import CartContext from '../../store/cart-context';
 import Modal from '../UI/Modal/Modal';
 import CartItem from './CartItem';
 import classes from './Cart.module.css';
+import Navbar from '../UI/Navbar/Navbar';
+import ShoppingIcon from '../UI/Icons/ShoppingIcon';
 
 const Cart = (props) => {
   const cartCtx = React.useContext(CartContext);
@@ -34,19 +36,31 @@ const Cart = (props) => {
     </ul>
   );
 
+  const NoItemsInfo = (
+    <div className={classes.info}>
+      <ShoppingIcon />
+      <h2>Add items to your cart</h2>
+      <div>Your basket is empty</div>
+    </div>
+  );
+
   return (
     <Modal onClose={props.onClose}>
-      {CartItems}
-      <div className={classes.total}>
-        <span>Total Amount</span>
-        <span>{totalAmount}</span>
-      </div>
-      <div className={classes.actions}>
-        <button className={classes['button--alt']} onClick={props.onClose}>
-          Close
-        </button>
-        {hasItems && <button className={classes.button}>Order</button>}
-      </div>
+      <Navbar label='Shopping Cart' onClose={props.onClose} />
+      {hasItems ? CartItems : NoItemsInfo}
+      {hasItems && (
+        <>
+          <div className={classes.total}>
+            <span>Total</span>
+            <span>{totalAmount}</span>
+          </div>
+          <div className={classes.order}>
+            <button>
+              Order<span> ({totalAmount})</span>
+            </button>
+          </div>
+        </>
+      )}
     </Modal>
   );
 };

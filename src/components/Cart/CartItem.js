@@ -1,5 +1,7 @@
 import React from 'react';
 
+import AddIcon from '../UI/Icons/AddIcon';
+import RemoveIcon from '../UI/Icons/RemoveIcon';
 import classes from './CartItem.module.css';
 
 const CartItem = (props) => {
@@ -7,16 +9,20 @@ const CartItem = (props) => {
 
   return (
     <li className={classes['cart-item']}>
-      <div>
+      <div className={classes.summary}>
+        <div className={classes.amount}>{props.amount}</div>
         <h2>{props.name}</h2>
-        <div className={classes.summary}>
-          <span className={classes.price}>{price}</span>
-          <span className={classes.amount}>x {props.amount}</span>
-        </div>
       </div>
       <div className={classes.actions}>
-        <button onClick={props.onRemove}>-</button>
-        <button onClick={props.onAdd}>+</button>
+        <span className={classes.price}>{price}</span>
+        <div>
+          <span onClick={props.onRemove}>
+            <RemoveIcon />
+          </span>
+          <span onClick={props.onAdd}>
+            <AddIcon />
+          </span>
+        </div>
       </div>
     </li>
   );
