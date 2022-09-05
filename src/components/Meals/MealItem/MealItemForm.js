@@ -16,6 +16,14 @@ const MealItemForm = (props) => {
     props.addHandler(inputAmountValue);
   };
 
+  const addItem = () => {
+    if (inputRef.current.value < 5) inputRef.current.value++;
+  };
+
+  const removeItem = () => {
+    if (inputRef.current.value > 0) inputRef.current.value--;
+  };
+
   return (
     <form className={classes.form} onSubmit={addProductHandler}>
       <Input
@@ -30,6 +38,8 @@ const MealItemForm = (props) => {
           defaultValue: '1',
           required: 'required',
         }}
+        onAdd={addItem}
+        onRemove={removeItem}
       />
       <button>Add</button>
     </form>
