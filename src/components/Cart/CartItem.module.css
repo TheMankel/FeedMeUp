@@ -51,8 +51,7 @@
   padding: 5px;
 }
 
-@media (min-width: 768px) {
-  /* .actions {
-    flex-direction: row;
-  } */
+.actions svg:hover,
+.actions svg:active {
+  border: 1px solid #146eeb;
 }
