@@ -1,19 +1,49 @@
 .input {
   display: flex;
   align-items: center;
-  margin-bottom: 0.5rem;
   color: #0a3847;
+  height: 36px;
 }
 
 .input label {
   font-weight: bold;
-  margin-right: 1rem;
+}
+
+.input svg {
+  fill: #125fca;
+  border: 1px solid #d7d7d7;
+  padding: 5px;
+  height: 100%;
+}
+
+.input svg:hover,
+.input svg:active {
+  border: 1px solid #146eeb;
+}
+
+.input span {
+  height: 100%;
+  cursor: pointer;
 }
 
 .input input {
-  width: 3rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font: inherit;
-  padding-left: 0.5rem;
+  text-align: center;
+  border: none;
+  border-top: 1px solid #d7d7d7;
+  border-bottom: 1px solid #d7d7d7;
+  height: 100%;
+  padding: 0;
+  aspect-ratio: 1/1;
+  outline: none;
+  cursor: context-menu;
+}
+
+.input input::-webkit-outer-spin-button,
+.input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input input[type='number'] {
+  -moz-appearance: textfield;
 }
