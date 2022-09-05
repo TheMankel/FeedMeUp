@@ -1,0 +1,36 @@
+.footer {
+  width: 100%;
+  background-color: #0a3847;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+}
+
+.logo img {
+  height: 28px;
+  fill: #ffffff;
+}
+
+.creator {
+  text-align: center;
+  padding: 0 0 1rem;
+}
+
+@media (min-width: 481px) {
+  .logo {
+    font-size: 12px;
+  }
+
+  .logo img {
+    height: 32px;
+  }
+}
