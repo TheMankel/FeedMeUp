@@ -1,7 +1,7 @@
 import React from 'react';
 
 import HeaderCartButton from './HeaderCartButton';
-import logo from '../../assets/logo.jpg';
+import logo from '../../assets/logo.png';
 import classes from './Header.module.css';
 
 const Header = (props) => {
