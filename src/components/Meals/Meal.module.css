@@ -1,0 +1,18 @@
+.meal {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  gap: 0.5rem;
+}
+
+.price {
+  color: #f86600;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.description {
+  color: #666666;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
