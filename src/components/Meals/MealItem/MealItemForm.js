@@ -14,6 +14,7 @@ const MealItemForm = (props) => {
     if (inputAmountValue < 1 || inputAmountValue > 5) return;
 
     props.addHandler(inputAmountValue);
+    props.onClose();
   };
 
   const addItem = (e) => {

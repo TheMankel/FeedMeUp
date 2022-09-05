@@ -26,7 +26,11 @@ const Meal = (props) => {
       <div className={classes.meal}>
         <span className={classes.price}>{price}</span>
         <span className={classes.description}>{props.item.description}</span>
-        <MealItemForm id={props.id} addHandler={addHandler} />
+        <MealItemForm
+          id={props.id}
+          addHandler={addHandler}
+          onClose={props.onClose}
+        />
       </div>
     </Modal>
   );
