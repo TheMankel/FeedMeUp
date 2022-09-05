@@ -22,3 +22,10 @@
 .form button:active {
   background-color: #146eeb;
 }
+
+.disable {
+  cursor: context-menu !important;
+  background-color: #ebebeb !important;
+  fill: #666666 !important;
+  border: 1px solid #d7d7d7 !important;
+}

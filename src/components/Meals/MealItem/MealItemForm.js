@@ -16,12 +16,26 @@ const MealItemForm = (props) => {
     props.addHandler(inputAmountValue);
   };
 
-  const addItem = () => {
+  const addItem = (e) => {
     if (inputRef.current.value < 5) inputRef.current.value++;
+
+    if (+inputRef.current.value === 5) e.target.classList.add(classes.disable);
+
+    e.target
+      .closest('div')
+      .querySelector('#remove svg')
+      .classList.remove(classes.disable);
   };
 
-  const removeItem = () => {
+  const removeItem = (e) => {
     if (inputRef.current.value > 0) inputRef.current.value--;
+
+    if (+inputRef.current.value === 0) e.target.classList.add(classes.disable);
+
+    e.target
+      .closest('div')
+      .querySelector('#add svg')
+      .classList.remove(classes.disable);
   };
 
   return (

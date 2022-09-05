@@ -7,11 +7,11 @@ import classes from './Input.module.css';
 const Input = React.forwardRef((props, ref) => {
   return (
     <div className={classes.input}>
-      <span onClick={props.onRemove}>
+      <span id='remove' onClick={props.onRemove}>
         <RemoveIcon />
       </span>
       <input ref={ref} {...props.input}></input>
-      <span onClick={props.onAdd}>
+      <span id='add' onClick={props.onAdd}>
         <AddIcon />
       </span>
     </div>
