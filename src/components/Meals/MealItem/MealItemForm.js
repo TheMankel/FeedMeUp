@@ -5,6 +5,8 @@ import classes from './MealItemForm.module.css';
 
 const MealItemForm = (props) => {
   const inputRef = useRef();
+  const addRef = useRef();
+  const removeRef = useRef();
 
   const addProductHandler = (e) => {
     e.preventDefault();
@@ -17,26 +19,22 @@ const MealItemForm = (props) => {
     props.onClose();
   };
 
-  const addItem = (e) => {
+  const addItem = () => {
     if (inputRef.current.value < 5) inputRef.current.value++;
 
-    if (+inputRef.current.value === 5) e.target.classList.add(classes.disable);
+    removeRef.current.classList.remove(classes.disable);
 
-    e.target
-      .closest('div')
-      .querySelector('#remove svg')
-      .classList.remove(classes.disable);
+    if (+inputRef.current.value === 5)
+      addRef.current.classList.add(classes.disable);
   };
 
-  const removeItem = (e) => {
+  const removeItem = () => {
     if (inputRef.current.value > 0) inputRef.current.value--;
 
-    if (+inputRef.current.value === 0) e.target.classList.add(classes.disable);
+    addRef.current.classList.remove(classes.disable);
 
-    e.target
-      .closest('div')
-      .querySelector('#add svg')
-      .classList.remove(classes.disable);
+    if (+inputRef.current.value === 0)
+      removeRef.current.classList.add(classes.disable);
   };
 
   return (
@@ -55,6 +53,8 @@ const MealItemForm = (props) => {
         }}
         onAdd={addItem}
         onRemove={removeItem}
+        addRef={addRef}
+        removeRef={removeRef}
       />
       <button>Add</button>
     </form>
