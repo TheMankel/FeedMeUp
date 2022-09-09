@@ -3,15 +3,20 @@ import React, { useEffect, useState } from 'react';
 import MealItem from './MealItem/MealItem';
 import classes from './AvailableMeals.module.css';
 import Card from '../UI/Card/Card';
+import ErrorMessage from '../UI/ErrorMessage/ErrorMessage';
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
+  const [httpError, setHttpError] = useState();
 
   useEffect(() => {
     const fetchMeals = async () => {
       const res = await fetch(
         'https://react-rest-2137-default-rtdb.firebaseio.com/meals.json',
       );
+
+      if (!res.ok) throw new Error('Something went wrong!');
+
       const data = await res.json();
 
       const loadedMeals = [];
@@ -28,8 +33,19 @@ const AvailableMeals = () => {
       setMeals(loadedMeals);
     };
 
-    fetchMeals();
+    fetchMeals().catch((err) => {
+      setHttpError(err.message);
+    });
   }, []);
+
+  if (httpError)
+    return (
+      <section className={classes.meals}>
+        <Card>
+          <ErrorMessage info={httpError} />
+        </Card>
+      </section>
+    );
 
   const mealsList = meals.map((meal) => (
     <MealItem
@@ -45,7 +61,8 @@ const AvailableMeals = () => {
   return (
     <section className={classes.meals}>
       <Card>
-        <ul>{mealsList}</ul>
+        {!httpError && <ul>{mealsList}</ul>}
+        {httpError && <ErrorMessage info={httpError} />}
       </Card>
     </section>
   );
