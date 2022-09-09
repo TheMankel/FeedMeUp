@@ -7,11 +7,17 @@
 }
 
 .info svg {
-  width: 80px;
+  height: 64px;
   fill: #0a3847;
 }
 
 .info h3 {
   margin: 0;
   padding: 0.5rem 0;
+}
+
+@media (min-width: 481px) {
+  .info svg {
+    height: 80px;
+  }
 }
