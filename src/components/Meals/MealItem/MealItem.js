@@ -1,10 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Spinner from '../../UI/Spinner/Spinner';
 import Meal from '../Meal';
 
 import classes from './MealItem.module.css';
 
 const MealItem = (props) => {
   const [mealVisible, setMealVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [image, setImage] = useState('');
+
+  useEffect(() => {
+    const loadImage = async () => {
+      const res = await fetch(props.image);
+      const blob = await res.blob();
+
+      const markup = (
+        <img
+          src={URL.createObjectURL(blob)}
+          alt={`Fresh and tasty ${props.name}`}
+        />
+      );
+      setImage(markup);
+
+      setIsLoading(false);
+    };
+
+    loadImage();
+  });
+
   const price = `$${props.price.toFixed(2)}`;
 
   const openMealHandler = () => {
@@ -25,7 +48,8 @@ const MealItem = (props) => {
           <div className={classes.price}>{price}</div>
         </div>
         <div className={classes.image}>
-          <img src={props.image} alt={`Fresh and tasty ${props.name}`} />
+          {!isLoading && image}
+          {isLoading && <Spinner />}
         </div>
       </li>
     </>
