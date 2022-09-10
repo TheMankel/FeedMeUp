@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import CartContext from '../../store/cart-context';
 import Modal from '../UI/Modal/Modal';
@@ -6,9 +6,12 @@ import CartItem from './CartItem';
 import classes from './Cart.module.css';
 import Navbar from '../UI/Navbar/Navbar';
 import ShoppingIcon from '../UI/Icons/ShoppingIcon';
+import Button from '../UI/Button/Button';
+import Checkout from './Checkout';
 
 const Cart = (props) => {
   const cartCtx = React.useContext(CartContext);
+  const [isOrdering, setIsOrdering] = useState(false);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
@@ -44,23 +47,32 @@ const Cart = (props) => {
     </div>
   );
 
+  const orderHandler = () => {
+    setIsOrdering(true);
+  };
+
+  const OrderBottom = (
+    <>
+      <div className={classes.total}>
+        <span>Total</span>
+        <span>{totalAmount}</span>
+      </div>
+      <Button name='Order' totalAmount={totalAmount} onClick={orderHandler} />
+    </>
+  );
+
+  const CartComponents = (
+    <>
+      {hasItems ? CartItems : NoItemsInfo}
+      {hasItems && OrderBottom}
+    </>
+  );
+
   return (
     <Modal onClose={props.onClose}>
       <Navbar label='Shopping Cart' onClose={props.onClose} />
-      {hasItems ? CartItems : NoItemsInfo}
-      {hasItems && (
-        <>
-          <div className={classes.total}>
-            <span>Total</span>
-            <span>{totalAmount}</span>
-          </div>
-          <div className={classes.order}>
-            <button>
-              Order<span> ({totalAmount})</span>
-            </button>
-          </div>
-        </>
-      )}
+      {!isOrdering && CartComponents}
+      {isOrdering && <Checkout />}
     </Modal>
   );
 };
