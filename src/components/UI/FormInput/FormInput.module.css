@@ -1,2 +1,31 @@
 .control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 0.25rem 0;
+  gap: 4px;
+}
+
+.control label {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.control input {
+  color: #242e30;
+  border-radius: 12px;
+  border: 1px solid #242e30;
+  cursor: text;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 12px 16px;
+}
+
+@media (min-width: 768px) {
+  .control {
+    width: calc(100% / 2 - 0.5rem);
+  }
 }
