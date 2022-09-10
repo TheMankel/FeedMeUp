@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+
+.wrapper h3 {
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.wrapper:nth-child(2) {
+  margin-bottom: 0.5rem;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
