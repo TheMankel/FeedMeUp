@@ -6,7 +6,7 @@ import classes from './Checkout.module.css';
 
 const Checkout = (props) => {
   return (
-    <form>
+    <form className={classes.form}>
       <div className={classes.wrapper}>
         <h3>Delivery address</h3>
         <div className={classes['form-wrapper']}>
