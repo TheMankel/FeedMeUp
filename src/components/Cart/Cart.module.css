@@ -38,20 +38,3 @@
   height: 56px;
   fill: #0a3847;
 }
-
-.order button {
-  width: 100%;
-  cursor: pointer;
-  color: #ffffff;
-  background-color: #125fca;
-  border: #125fca;
-  border-radius: 4px;
-  padding: 1rem 0;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.order button:hover,
-.order button:active {
-  background-color: #146eeb;
-}
