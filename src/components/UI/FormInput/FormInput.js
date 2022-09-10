@@ -10,7 +10,7 @@ const FormInput = (props) => {
         type={props.type}
         id={props.id}
         placeholder={props.placeholder}
-        autocomplete='off'
+        autoComplete='off'
       />
     </div>
   );
