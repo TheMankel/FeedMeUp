@@ -1,5 +1,5 @@
 .form {
-  height: 100%;
+  height: 75vh;
   overflow-y: scroll;
 }
 
@@ -28,6 +28,11 @@
 }
 
 @media (min-width: 768px) {
+  .form {
+    height: auto;
+    overflow-y: unset;
+  }
+
   .form-wrapper {
     display: flex;
     flex-direction: row;
