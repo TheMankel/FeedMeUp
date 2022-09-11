@@ -8,6 +8,7 @@ import classes from './Checkout.module.css';
 
 const hasLetters = (value) => {
   // if (isEmpty(value)) return false;
+
   const regex = /^[a-zA-Z]+$/;
   // console.log(value, regex.test(value));
 
@@ -48,7 +49,7 @@ const isEmail = (value) => {
   // if (isEmpty(value)) return false;
 
   // const regex = /^([a-zA-Z0-9][.!#$%&'*+/=?^_`{|}~-]{0,1})+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
-  const regex = /^[a-zA-Z]+([0-9]*)+@[a-zA-Z]+\.[a-zA-Z]+$/;
+  const regex = /^([a-zA-Z]+([0-9.]*))+@[a-zA-Z]+\.[a-zA-Z]+$/;
 
   // console.log(value, regex.test(value));
 
@@ -137,6 +138,7 @@ const Checkout = (props) => {
             placeholder='Type street name'
             type='text'
             id='streetName'
+            validity={!formInputValidity.streetName}
           />
           <FormInput
             refInput={streetNumberInputRef}
@@ -144,6 +146,7 @@ const Checkout = (props) => {
             placeholder='Type house number'
             type='text'
             id='streetNumber'
+            validity={!formInputValidity.streetNumber}
           />
           <FormInput
             refInput={postalCodeInputRef}
@@ -151,6 +154,7 @@ const Checkout = (props) => {
             placeholder='Type your postal code'
             type='text'
             id='postalCode'
+            validity={!formInputValidity.postalCode}
           />
           <FormInput
             refInput={cityInputRef}
@@ -158,6 +162,7 @@ const Checkout = (props) => {
             placeholder='Type your city'
             type='text'
             id='city'
+            validity={!formInputValidity.city}
           />
         </div>
       </div>
@@ -170,6 +175,7 @@ const Checkout = (props) => {
             placeholder='Type your first and last name'
             type='text'
             id='fullName'
+            validity={!formInputValidity.fullName}
           />
           <FormInput
             refInput={emailInputRef}
@@ -177,6 +183,7 @@ const Checkout = (props) => {
             placeholder='yourname@email.com'
             type='text'
             id='email'
+            validity={!formInputValidity.email}
           />
           <FormInput
             refInput={phoneNumberInputRef}
@@ -184,6 +191,7 @@ const Checkout = (props) => {
             placeholder='Type your phone number'
             type='text'
             id='phoneNumber'
+            validity={!formInputValidity.phoneNumber}
           />
         </div>
       </div>
