@@ -24,6 +24,19 @@
   padding: 12px 16px;
 }
 
+.message {
+  display: flex;
+  align-items: center;
+  color: #d50525;
+  gap: 8px;
+  height: 20px;
+  font-size: 14px;
+}
+
+.message svg {
+  height: 20px;
+}
+
 @media (min-width: 768px) {
   .control {
     width: calc(100% / 2 - 0.5rem);
