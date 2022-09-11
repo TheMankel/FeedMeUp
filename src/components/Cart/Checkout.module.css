@@ -1,6 +1,7 @@
 .form {
   height: 75vh;
   overflow-y: scroll;
+  padding-right: 1rem;
 }
 
 .wrapper {
