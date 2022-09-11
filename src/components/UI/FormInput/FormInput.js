@@ -7,6 +7,7 @@ const FormInput = (props) => {
     <div className={classes.control}>
       <label htmlFor={props.id}>{props.label}</label>
       <input
+        ref={props.refInput}
         type={props.type}
         id={props.id}
         placeholder={props.placeholder}
