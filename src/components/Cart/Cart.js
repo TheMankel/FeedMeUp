@@ -72,7 +72,7 @@ const Cart = (props) => {
     <Modal onClose={props.onClose}>
       <Navbar label='Shopping Cart' onClose={props.onClose} />
       {!isOrdering && CartComponents}
-      {isOrdering && <Checkout />}
+      {isOrdering && <Checkout totalAmount={totalAmount} />}
     </Modal>
   );
 };
