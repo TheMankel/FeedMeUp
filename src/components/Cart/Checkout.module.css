@@ -1,5 +1,9 @@
 .form {
   height: 70vh;
+}
+
+.inputs {
+  height: 90%;
   overflow-y: scroll;
   padding-right: 1rem;
 }

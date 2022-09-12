@@ -129,70 +129,72 @@ const Checkout = (props) => {
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
-      <div className={classes.wrapper}>
-        <h3>Delivery address</h3>
-        <div className={classes['form-wrapper']}>
-          <FormInput
-            refInput={streetNameInputRef}
-            label='Street name'
-            placeholder='Type street name'
-            type='text'
-            id='streetName'
-            validity={!formInputValidity.streetName}
-          />
-          <FormInput
-            refInput={streetNumberInputRef}
-            label='House number'
-            placeholder='Type house number'
-            type='text'
-            id='streetNumber'
-            validity={!formInputValidity.streetNumber}
-          />
-          <FormInput
-            refInput={postalCodeInputRef}
-            label='Postcode'
-            placeholder='Type your postal code'
-            type='text'
-            id='postalCode'
-            validity={!formInputValidity.postalCode}
-          />
-          <FormInput
-            refInput={cityInputRef}
-            label='City'
-            placeholder='Type your city'
-            type='text'
-            id='city'
-            validity={!formInputValidity.city}
-          />
+      <div className={classes.inputs}>
+        <div className={classes.wrapper}>
+          <h3>Delivery address</h3>
+          <div className={classes['form-wrapper']}>
+            <FormInput
+              refInput={streetNameInputRef}
+              label='Street name'
+              placeholder='Type street name'
+              type='text'
+              id='streetName'
+              validity={!formInputValidity.streetName}
+            />
+            <FormInput
+              refInput={streetNumberInputRef}
+              label='House number'
+              placeholder='Type house number'
+              type='text'
+              id='streetNumber'
+              validity={!formInputValidity.streetNumber}
+            />
+            <FormInput
+              refInput={postalCodeInputRef}
+              label='Postcode'
+              placeholder='Type your postal code'
+              type='text'
+              id='postalCode'
+              validity={!formInputValidity.postalCode}
+            />
+            <FormInput
+              refInput={cityInputRef}
+              label='City'
+              placeholder='Type your city'
+              type='text'
+              id='city'
+              validity={!formInputValidity.city}
+            />
+          </div>
         </div>
-      </div>
-      <div className={classes.wrapper}>
-        <h3>Personal details</h3>
-        <div className={classes['form-wrapper']}>
-          <FormInput
-            refInput={fullNameInputRef}
-            label='First and last name'
-            placeholder='Type your first and last name'
-            type='text'
-            id='fullName'
-            validity={!formInputValidity.fullName}
-          />
-          <FormInput
-            refInput={emailInputRef}
-            label='E-mail'
-            placeholder='yourname@email.com'
-            type='text'
-            id='email'
-            validity={!formInputValidity.email}
-          />
-          <FormInput
-            refInput={phoneNumberInputRef}
-            label='Phone number'
-            placeholder='Type your phone number'
-            type='text'
-            id='phoneNumber'
-            validity={!formInputValidity.phoneNumber}
-          />
+        <div className={classes.wrapper}>
+          <h3>Personal details</h3>
+          <div className={classes['form-wrapper']}>
+            <FormInput
+              refInput={fullNameInputRef}
+              label='First and last name'
+              placeholder='Type your first and last name'
+              type='text'
+              id='fullName'
+              validity={!formInputValidity.fullName}
+            />
+            <FormInput
+              refInput={emailInputRef}
+              label='E-mail'
+              placeholder='yourname@email.com'
+              type='text'
+              id='email'
+              validity={!formInputValidity.email}
+            />
+            <FormInput
+              refInput={phoneNumberInputRef}
+              label='Phone number'
+              placeholder='Type your phone number'
+              type='text'
+              id='phoneNumber'
+              validity={!formInputValidity.phoneNumber}
+            />
+          </div>
         </div>
       </div>
       <Button name='Order' totalAmount={props.totalAmount} />
