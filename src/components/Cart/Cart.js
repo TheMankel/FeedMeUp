@@ -8,10 +8,14 @@ import Navbar from '../UI/Navbar/Navbar';
 import ShoppingIcon from '../UI/Icons/ShoppingIcon';
 import Button from '../UI/Button/Button';
 import Checkout from './Checkout';
+import ErrorMessage from '../UI/ErrorMessage/ErrorMessage';
+import DeliveryIcon from '../UI/Icons/DeliveryIcon';
 
 const Cart = (props) => {
   const cartCtx = React.useContext(CartContext);
   const [isOrdering, setIsOrdering] = useState(false);
+  const [isOrdered, setIsOrdered] = useState(false);
+  const [httpError, setHttpError] = useState();
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
@@ -23,6 +27,43 @@ const Cart = (props) => {
   const removeHandler = (id) => {
     cartCtx.removeItem(id);
   };
+
+  const orderHandler = () => {
+    setIsOrdering(true);
+  };
+
+  const submitOrderHandler = async (userData) => {
+    try {
+      const res = await fetch(
+        'https://react-rest-2137-default-rtdb.firebaseio.com/orders.json',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            user: userData,
+            orderedItems: cartCtx.items,
+          }),
+        },
+      );
+
+      if (!res.ok) throw new Error('Something went wrong!');
+
+      setIsOrdered(true);
+      cartCtx.clearCart();
+    } catch (err) {
+      setHttpError(err.message);
+    }
+  };
+
+  if (httpError)
+    return (
+      <Modal onClose={props.onClose}>
+        <Navbar label='Shopping Cart' onClose={props.onClose} />
+        <ErrorMessage info={httpError} />
+      </Modal>
+    );
 
   const CartItems = (
     <ul className={classes['cart-items']}>
@@ -47,10 +88,6 @@ const Cart = (props) => {
     </div>
   );
 
-  const orderHandler = () => {
-    setIsOrdering(true);
-  };
-
   const OrderBottom = (
     <>
       <div className={classes.total}>
@@ -71,8 +108,10 @@ const Cart = (props) => {
   return (
     <Modal onClose={props.onClose}>
       <Navbar label='Shopping Cart' onClose={props.onClose} />
-      {!isOrdering && CartComponents}
-      {isOrdering && <Checkout totalAmount={totalAmount} />}
+      {!isOrdering && !isOrdered && CartComponents}
+      {isOrdering && !isOrdered && (
+        <Checkout onOrder={submitOrderHandler} totalAmount={totalAmount} />
+      )}
     </Modal>
   );
 };
