@@ -83,6 +83,24 @@ const Checkout = (props) => {
     email: true,
     phoneNumber: true,
   });
+  const [enteredNameTouched, setEnteredNameTouched] = useState({
+    streetName: false,
+    streetNumber: false,
+    postalCode: false,
+    city: false,
+    fullName: false,
+    email: false,
+    phoneNumber: false,
+  });
+
+  const nameInputBlurHandler = (e) => {
+    setEnteredNameTouched((prevState) => {
+      let updatedState = prevState;
+      updatedState[e.target.id] = true;
+      return updatedState;
+    });
+    console.log(enteredNameTouched);
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -140,6 +158,7 @@ const Checkout = (props) => {
               type='text'
               id='streetName'
               validity={!formInputValidity.streetName}
+              onBlur={nameInputBlurHandler}
             />
             <FormInput
               refInput={streetNumberInputRef}
@@ -148,6 +167,7 @@ const Checkout = (props) => {
               type='text'
               id='streetNumber'
               validity={!formInputValidity.streetNumber}
+              onBlur={nameInputBlurHandler}
             />
             <FormInput
               refInput={postalCodeInputRef}
