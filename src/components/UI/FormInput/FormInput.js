@@ -7,24 +7,25 @@ const FormInput = (props) => {
   const message = (
     <div className={classes.message}>
       <WarningIcon />
-      <span>{props.label} is required</span>
+      <span>{props.label} is invalid</span>
     </div>
   );
 
-  const inputClasses = props.validity ? classes.invalid : '';
+  const inputClasses = props.validity ? '' : classes.invalid;
   return (
     <div className={classes.control}>
       <label htmlFor={props.id}>{props.label}</label>
       <input
         className={inputClasses}
-        ref={props.refInput}
         type={props.type}
         id={props.id}
         placeholder={props.placeholder}
         autoComplete='off'
         onBlur={props.onBlur}
+        onChange={props.onChange}
+        value={props.value}
       />
-      {props.validity && message}
+      {!props.validity && message}
     </div>
   );
 };

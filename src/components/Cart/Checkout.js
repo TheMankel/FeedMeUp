@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../UI/Button/Button';
 
 import FormInput from '../UI/FormInput/FormInput';
@@ -67,22 +67,26 @@ const isPhoneNumber = (value) => {
 };
 
 const Checkout = (props) => {
-  const streetNameInputRef = useRef();
-  const streetNumberInputRef = useRef();
-  const postalCodeInputRef = useRef();
-  const cityInputRef = useRef();
-  const fullNameInputRef = useRef();
-  const emailInputRef = useRef();
-  const phoneNumberInputRef = useRef();
-  const [formInputValidity, setFormInputValidity] = useState({
-    streetName: true,
-    streetNumber: true,
-    postalCode: true,
-    city: true,
-    fullName: true,
-    email: true,
-    phoneNumber: true,
+  const [enteredInputValue, setEnteredInputValue] = useState({
+    streetName: '',
+    streetNumber: '',
+    postalCode: '',
+    city: '',
+    fullName: '',
+    email: '',
+    phoneNumber: '',
   });
+
+  const [formInputValidity, setFormInputValidity] = useState({
+    streetName: false,
+    streetNumber: false,
+    postalCode: false,
+    city: false,
+    fullName: false,
+    email: false,
+    phoneNumber: false,
+  });
+
   const [enteredNameTouched, setEnteredNameTouched] = useState({
     streetName: false,
     streetNumber: false,
@@ -93,52 +97,67 @@ const Checkout = (props) => {
     phoneNumber: false,
   });
 
+  const [formIsValid, setFormIsValid] = useState(false);
+
+  useEffect(() => {
+    const enteredStreetNameIsValid = hasLetters(enteredInputValue.streetName);
+    const enteredStreetNumberIsValid = hasNumbers(
+      enteredInputValue.streetNumber,
+    );
+    const enteredCodeIsValid = isPostalCode(enteredInputValue.postalCode);
+    const enteredCityIsValid = hasLetters(enteredInputValue.city);
+    const enteredFullNameIsValid = isFullName(enteredInputValue.fullName);
+    const enteredEmailIsValid = isEmail(enteredInputValue.email);
+    const enteredPhoneNumberIsValid = isPhoneNumber(
+      enteredInputValue.phoneNumber,
+    );
+
+    setFormInputValidity({
+      streetName: !enteredStreetNameIsValid && enteredNameTouched.streetName,
+      streetNumber:
+        !enteredStreetNumberIsValid && enteredNameTouched.streetNumber,
+      postalCode: !enteredCodeIsValid && enteredNameTouched.postalCode,
+      city: !enteredCityIsValid && enteredNameTouched.city,
+      fullName: !enteredFullNameIsValid && enteredNameTouched.fullName,
+      email: !enteredEmailIsValid && enteredNameTouched.email,
+      phoneNumber: !enteredPhoneNumberIsValid && enteredNameTouched.phoneNumber,
+    });
+  }, [enteredInputValue, enteredNameTouched]);
+
+  const inputChangeHandler = (e) => {
+    setEnteredInputValue((prevState) => {
+      let updatedState = { ...prevState };
+      updatedState[e.target.id] = e.target.value;
+      return updatedState;
+    });
+    console.log(e.target.value);
+  };
+
   const nameInputBlurHandler = (e) => {
     setEnteredNameTouched((prevState) => {
-      let updatedState = prevState;
+      let updatedState = { ...prevState };
       updatedState[e.target.id] = true;
       return updatedState;
     });
-    console.log(enteredNameTouched);
+    // console.log(enteredNameTouched);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const enteredStreetName = streetNameInputRef.current.value;
-    const enteredStreetNumber = streetNumberInputRef.current.value;
-    const enteredCode = postalCodeInputRef.current.value;
-    const enteredCity = cityInputRef.current.value;
-    const enteredFullName = fullNameInputRef.current.value;
-    const enteredEmail = emailInputRef.current.value;
-    const enteredPhoneNumber = phoneNumberInputRef.current.value;
+    let isValid = true;
+    for (const [key, value] of Object.entries(formInputValidity)) {
+      setEnteredNameTouched((prevState) => {
+        let updatedState = { ...prevState };
+        updatedState[key] = true;
+        return updatedState;
+      });
+      console.log(value);
+      isValid *= value;
+    }
+    console.log(enteredNameTouched, formInputValidity);
 
-    const enteredStreetNameIsValid = hasLetters(enteredStreetName);
-    const enteredStreetNumberIsValid = hasNumbers(enteredStreetNumber);
-    const enteredCodeIsValid = isPostalCode(enteredCode);
-    const enteredCityIsValid = hasLetters(enteredCity);
-    const enteredFullNameIsValid = isFullName(enteredFullName);
-    const enteredEmailIsValid = isEmail(enteredEmail);
-    const enteredPhoneNumberIsValid = isPhoneNumber(enteredPhoneNumber);
-
-    setFormInputValidity({
-      streetName: enteredStreetNameIsValid,
-      streetNumber: enteredStreetNumberIsValid,
-      postalCode: enteredCodeIsValid,
-      city: enteredCityIsValid,
-      fullName: enteredFullNameIsValid,
-      email: enteredEmailIsValid,
-      phoneNumber: enteredPhoneNumberIsValid,
-    });
-
-    const formIsValid =
-      enteredStreetNameIsValid &&
-      enteredStreetNumberIsValid &&
-      enteredCodeIsValid &&
-      enteredCityIsValid &&
-      enteredFullNameIsValid &&
-      enteredEmailIsValid &&
-      enteredPhoneNumberIsValid;
+    console.log(isValid);
 
     if (formIsValid) {
       return;
@@ -152,38 +171,44 @@ const Checkout = (props) => {
           <h3>Delivery address</h3>
           <div className={classes['form-wrapper']}>
             <FormInput
-              refInput={streetNameInputRef}
               label='Street name'
               placeholder='Type street name'
               type='text'
               id='streetName'
               validity={!formInputValidity.streetName}
               onBlur={nameInputBlurHandler}
+              onChange={inputChangeHandler}
+              value={enteredInputValue.streetName}
             />
             <FormInput
-              refInput={streetNumberInputRef}
               label='House number'
               placeholder='Type house number'
               type='text'
               id='streetNumber'
               validity={!formInputValidity.streetNumber}
               onBlur={nameInputBlurHandler}
+              onChange={inputChangeHandler}
+              value={enteredInputValue.streetNumber}
             />
             <FormInput
-              refInput={postalCodeInputRef}
               label='Postcode'
               placeholder='Type your postal code'
               type='text'
               id='postalCode'
               validity={!formInputValidity.postalCode}
+              onBlur={nameInputBlurHandler}
+              onChange={inputChangeHandler}
+              value={enteredInputValue.postalCode}
             />
             <FormInput
-              refInput={cityInputRef}
               label='City'
               placeholder='Type your city'
               type='text'
               id='city'
               validity={!formInputValidity.city}
+              onBlur={nameInputBlurHandler}
+              onChange={inputChangeHandler}
+              value={enteredInputValue.city}
             />
           </div>
         </div>
@@ -191,28 +216,34 @@ const Checkout = (props) => {
           <h3>Personal details</h3>
           <div className={classes['form-wrapper']}>
             <FormInput
-              refInput={fullNameInputRef}
               label='First and last name'
               placeholder='Type your first and last name'
               type='text'
               id='fullName'
               validity={!formInputValidity.fullName}
+              onBlur={nameInputBlurHandler}
+              onChange={inputChangeHandler}
+              value={enteredInputValue.fullName}
             />
             <FormInput
-              refInput={emailInputRef}
               label='E-mail'
               placeholder='yourname@email.com'
               type='text'
               id='email'
               validity={!formInputValidity.email}
+              onBlur={nameInputBlurHandler}
+              onChange={inputChangeHandler}
+              value={enteredInputValue.email}
             />
             <FormInput
-              refInput={phoneNumberInputRef}
               label='Phone number'
               placeholder='Type your phone number'
               type='text'
               id='phoneNumber'
               validity={!formInputValidity.phoneNumber}
+              onBlur={nameInputBlurHandler}
+              onChange={inputChangeHandler}
+              value={enteredInputValue.phoneNumber}
             />
           </div>
         </div>
