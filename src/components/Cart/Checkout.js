@@ -122,6 +122,16 @@ const Checkout = (props) => {
       email: !enteredEmailIsValid && enteredNameTouched.email,
       phoneNumber: !enteredPhoneNumberIsValid && enteredNameTouched.phoneNumber,
     });
+
+    setFormIsValid(
+      enteredStreetNameIsValid &&
+        enteredStreetNumberIsValid &&
+        enteredCodeIsValid &&
+        enteredCityIsValid &&
+        enteredFullNameIsValid &&
+        enteredEmailIsValid &&
+        enteredPhoneNumberIsValid,
+    );
   }, [enteredInputValue, enteredNameTouched]);
 
   const inputChangeHandler = (e) => {
@@ -130,7 +140,6 @@ const Checkout = (props) => {
       updatedState[e.target.id] = e.target.value;
       return updatedState;
     });
-    console.log(e.target.value);
   };
 
   const nameInputBlurHandler = (e) => {
@@ -139,28 +148,39 @@ const Checkout = (props) => {
       updatedState[e.target.id] = true;
       return updatedState;
     });
-    // console.log(enteredNameTouched);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    let isValid = true;
-    for (const [key, value] of Object.entries(formInputValidity)) {
+    for (const key of Object.keys(formInputValidity)) {
       setEnteredNameTouched((prevState) => {
         let updatedState = { ...prevState };
         updatedState[key] = true;
         return updatedState;
       });
-      console.log(value);
-      isValid *= value;
     }
-    console.log(enteredNameTouched, formInputValidity);
 
-    console.log(isValid);
-
-    if (formIsValid) {
+    if (!formIsValid) {
       return;
+    }
+
+    props.onOrder({
+      streetName: enteredInputValue.streetName,
+      streetNumber: enteredInputValue.streetNumber,
+      postalCode: enteredInputValue.postalCode,
+      city: enteredInputValue.city,
+      fullName: enteredInputValue.fullName,
+      email: enteredInputValue.email,
+      phoneNumber: enteredInputValue.phoneNumber,
+    });
+
+    for (const key of Object.keys(formInputValidity)) {
+      setEnteredNameTouched((prevState) => {
+        let updatedState = { ...prevState };
+        updatedState[key] = false;
+        return updatedState;
+      });
     }
   };
 
