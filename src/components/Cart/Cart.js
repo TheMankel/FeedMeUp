@@ -105,6 +105,14 @@ const Cart = (props) => {
     </>
   );
 
+  const OrderedInfo = (
+    <div className={classes.ordered}>
+      <h3>Thank you</h3>
+      <DeliveryIcon />
+      <h4>Your order will be with you soon!</h4>
+    </div>
+  );
+
   return (
     <Modal onClose={props.onClose}>
       <Navbar label='Shopping Cart' onClose={props.onClose} />
@@ -112,6 +120,7 @@ const Cart = (props) => {
       {isOrdering && !isOrdered && (
         <Checkout onOrder={submitOrderHandler} totalAmount={totalAmount} />
       )}
+      {isOrdered && OrderedInfo}
     </Modal>
   );
 };
