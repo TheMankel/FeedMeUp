@@ -15,10 +15,10 @@ const hasLetters = (value) => {
   return regex.test(value);
 };
 
-const hasNumbers = (value) => {
+const isHouseNumber = (value) => {
   // if (isEmpty(value)) return false;
 
-  const regex = /^[0-9]+$/;
+  const regex = /^[0-9]+(\/?[0-9])*$/;
   // console.log(value, regex.test(value));
 
   return regex.test(value);
@@ -48,9 +48,9 @@ const isFullName = (value) => {
 const isEmail = (value) => {
   // if (isEmpty(value)) return false;
 
-  // const regex = /^([a-zA-Z0-9][.!#$%&'*+/=?^_`{|}~-]{0,1})+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
-  const regex = /^([a-zA-Z]+([0-9.]*))+@[a-zA-Z]+\.[a-zA-Z]+$/;
-
+  const regex =
+    /^([a-zA-Z0-9][.!#$%&'*+/=?^_`{|}~-]{0,1})+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
+  // const regex = /^([a-zA-Z]+([0-9.]*))+@[a-zA-Z0-9-]+\.[a-zA-Z]+$/;
   // console.log(value, regex.test(value));
 
   return regex.test(value);
@@ -101,7 +101,7 @@ const Checkout = (props) => {
 
   useEffect(() => {
     const enteredStreetNameIsValid = hasLetters(enteredInputValue.streetName);
-    const enteredStreetNumberIsValid = hasNumbers(
+    const enteredStreetNumberIsValid = isHouseNumber(
       enteredInputValue.streetNumber,
     );
     const enteredCodeIsValid = isPostalCode(enteredInputValue.postalCode);
