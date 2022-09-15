@@ -4,64 +4,42 @@ import Button from '../UI/Button/Button';
 import FormInput from '../UI/FormInput/FormInput';
 import classes from './Checkout.module.css';
 
-// const isEmpty = (value) => value.trim() === '';
-
 const hasLetters = (value) => {
-  // if (isEmpty(value)) return false;
-
   const regex = /^[a-zA-Z]+$/;
-  // console.log(value, regex.test(value));
 
   return regex.test(value);
 };
 
 const isHouseNumber = (value) => {
-  // if (isEmpty(value)) return false;
-
   const regex = /^[0-9]+(\/?[0-9])*$/;
-  // console.log(value, regex.test(value));
 
   return regex.test(value);
 };
 
 const isPostalCode = (value) => {
-  // if (isEmpty(value)) return false;
-
   const regex = /^([1-9]{2})+(-?[0-9]{3})$/;
 
-  // console.log(value, regex.test(value));
   return regex.test(value);
 };
 
 const isFullName = (value) => {
-  // if (isEmpty(value)) return false;
-
-  // const regex = /^([a-zA-Z'-.]+ [a-zA-Z'-.]+)$/;
   const regex =
     /^(([a-zA-Z]+(['-.]+[a-zA-Z]+)*)+ [a-zA-Z]+(['-.]+[a-zA-Z]+)*)$/;
-
-  // console.log(value, regex.test(value));
 
   return regex.test(value);
 };
 
 const isEmail = (value) => {
-  // if (isEmpty(value)) return false;
-
   const regex =
     /^([a-zA-Z0-9][.!#$%&'*+/=?^_`{|}~-]{0,1})+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
   // const regex = /^([a-zA-Z]+([0-9.]*))+@[a-zA-Z0-9-]+\.[a-zA-Z]+$/;
-  // console.log(value, regex.test(value));
 
   return regex.test(value);
 };
 
 const isPhoneNumber = (value) => {
-  // if (isEmpty(value)) return false;
-
   const regex =
     /^\+?[0-9]{1,4}?[-. ]?\(?[0-9]{1,3}?\)?[-. ]?[0-9]{1,4}[-. ]?[0-9]{1,4}[-. ]?[0-9]{1,9}$/;
-  // console.log(value, regex.test(value));
 
   return regex.test(value);
 };
